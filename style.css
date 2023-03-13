@@ -1,0 +1,66 @@
+body {
+    background-image: url(3.jpg);
+}
+.flex-container {
+    margin: 5rem auto auto auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    box-shadow: 5px 5px 20px #000000;
+    width: 80%;
+    border-radius: 25px;
+  }
+  
+  .flex-container > div { /* for spell constructors */
+    background-color: #6dc9f386;
+    margin: 10px;
+    padding: 0.5rem;
+    text-align: center;
+    font-weight: 500;
+    border-radius: 25px;
+    font-size: 18px;
+  }
+  .flex-container > div > div{  /* tag compartment */
+    background-color: #6dc9f386;
+    border: 0.1rem solid black;
+    margin: 10px;
+    padding: 0.5rem;
+    text-align: center;
+    font-weight: 500;
+    border-radius: 25px;
+    font-size: 18px;
+  }
+  .selector {
+   width: 80%;
+    margin: 10px;
+    padding: 0.5rem;
+    text-align: center;
+    font-weight: 500;
+    border-radius: 25px;
+  }
+  #name{
+    background-color: #6dc9f386;
+    width: 87%;
+    padding: 0.5rem;
+    border-radius: 25px;
+    line-height: 50px;
+    font-size: 30px;
+  }
+  #info {
+    width: 80%;
+    padding: 60px;
+  }
+  .line {
+    border: 1px solid rgb(0, 0, 0);
+    display: flex;
+    margin: 20px;
+    box-shadow: 0px 2px #888888;
+  }
+
+  select {
+    padding: 16px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+  }
+  

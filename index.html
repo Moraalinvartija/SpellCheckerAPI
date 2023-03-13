@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="scripts.js"></script>
+<title>Spell Checker</title>
+</head>
+<body>
+   
+   
+    <div class="flex-container">
+        <form class="selector" onchange="myFunction()">
+            <h1>Select spell from dropdown</h1>
+            <label for="spell"></label>
+            <select name="spell" id="spell"></select>
+          </form>
+      <div class="name" id="name"><strong>Acid Arrow</strong></div>   
+        <div id = "level"><strong>Level:</strong><br>2</div>
+        <div id = "castingtime"><strong>Casting time:</strong><br>1 action</div>
+        <div id = "rangeArea"><strong>Range:</strong><br>90 feet</div>
+        <div id="components"><strong>Components:</strong><br>V,S,M</div>
+    
+        <div id = "duration"><strong>Duration:</strong> <br>Instantaneous</div>
+        <div id = "school"><strong>School:</strong><br>Evocation</div>
+        <div id = "attackSave"><strong>Attack/Save:</strong><br>Ranged</div>
+        <div id = "damageEffect"><strong>Damage/Effect:</strong><br>Acid</div>
+
+        <div id = "info">A shimmering green arrow streaks toward a target within range and bursts in a spray of acid. Make a ranged spell attack against the target. On a hit, the target takes 4d4 acid damage immediately and 2d4 acid damage at the end of its next turn. On a miss, the arrow splashes the target with acid for half as much of the initial damage and no damage at the end of its next turn.</div>
+        <div id = "tags">
+            <div>Wizard</div>
+            <div>Lore</div>
+            <div>Land</div>
+        </div>
+    </div>
+ 
+    </body>
+</html>
+
