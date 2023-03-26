@@ -18,7 +18,7 @@ async function getDataFromAPI(url) {                                            
     const url2 = "";
  
     $(document).ready(function() {      //get options for 
-        // The things we want to get
+                                        // the things we want to get
         const fetchItems = [{
             "endpoint": "/spells",
             "id": "#spell"
@@ -41,7 +41,7 @@ async function getDataFromAPI(url) {                                            
       });
 
       async function getSpellFromAPI(url) {
-        del();    
+        del("tags");    
         let obj2 = await fetch("https://www.dnd5eapi.co/api/spells/" + url);
         let  target= await obj2.text();
         let target2 =JSON.parse(target);
@@ -111,6 +111,6 @@ function checkDamage(A) {
     document.getElementById("damageEffect").innerHTML = "<strong>Damage/Effect: </strong>" + "<br>" + "None";
   }
 }
-function del() {
-  document.getElementById("tags").innerHTML = "";
+function del(ElementID) {
+  document.getElementById(ElementID).innerHTML = " ";
 }

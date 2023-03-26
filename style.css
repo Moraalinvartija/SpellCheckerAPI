@@ -49,6 +49,10 @@ body {
   #info {
     width: 80%;
     padding: 60px;
+    margin-bottom: 1.5rem;
+  }
+  #tags {
+    margin-bottom: 1.5rem;
   }
   .line {
     border: 1px solid rgb(0, 0, 0);
