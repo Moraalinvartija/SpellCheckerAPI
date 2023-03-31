@@ -2,7 +2,7 @@ body {
     background-image: url(3.jpg);
 }
 .flex-container {
-    margin: 5rem 2rem auto 2rem;
+    margin: 5rem auto auto auto;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
