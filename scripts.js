@@ -1,23 +1,4 @@
-async function getDataFromAPI(url) {                                            //kokeilua
-    let obj = await fetch(url);
-    let spells = await obj.text();
-     let spells2 =JSON.parse(spells);
-    
-    }
-    const url = "https://www.dnd5eapi.co/api/spells";
-    getDataFromAPI(url);
-    
-    async function fetchData() {
-    
-    let obj = await fetch('https://www.dnd5eapi.co/api/spells/');
-    let spells = await obj.text();
-    let spells2 =JSON.parse(spells);
-    
-    }
-    fetchData();
-    const url2 = "";
- 
-    $(document).ready(function() {      //get options for 
+      $(document).ready(function() {      //get options for 
         // The things we want to get
         const fetchItems = [{
             "endpoint": "/spells",
@@ -41,36 +22,37 @@ async function getDataFromAPI(url) {                                            
       });
 
       async function getSpellFromAPI(url) {
-        del();    
-        let obj2 = await fetch("https://www.dnd5eapi.co/api/spells/" + url);
-        let  target= await obj2.text();
-        let target2 =JSON.parse(target);
-         console.log("https://www.dnd5eapi.co/api/spells/" + url)
-        checkConcentrationRitual(target2);
-        document.getElementById("level").innerHTML = "<strong>Level: </strong>" + "<br>"+ target2.level;
-        document.getElementById("rangeArea").innerHTML = "<strong>Range: </strong>"+ "<br>" + target2.range;
-        document.getElementById("duration").innerHTML = "<strong>Duration: </strong>"+ "<br>" + target2.duration;
-        document.getElementById("school").innerHTML = "<strong>School: </strong>" + "<br>" + target2["school"]["name"];
-        document.getElementById("components").innerHTML = "<strong>Components:</strong> "+ "<br>" + replaceAll(JSON.stringify(target2["components"]));
-        checkAttack(target2);
-        checkDamage(target2);
-        document.getElementById("castingtime").innerHTML ="<strong>Casting time: </strong>"+ "<br>"+ target2.casting_time;
-
-        document.getElementById("info").innerHTML = replaceInfo(JSON.stringify(target2.desc));
-        const dndClass = target2.classes;
-        const subClass= target2.subclasses;
-        const myList = document.getElementById("tags");
-        for (const power of dndClass) {
-          const listItem = document.createElement('div');
-          listItem.textContent = replaceAll(JSON.stringify(power["name"]));
-          myList.appendChild(listItem);
+        try {
+          // Make API call and parse response
+          const response = await fetch(`https://www.dnd5eapi.co/api/spells/${url}`);
+          const spell = await response.json();
+      
+          // Update HTML elements with spell information
+          const name = spell.name + (spell.ritual ? " &#174" : "") + (spell.concentration ? " &#169" : "");
+          document.getElementById("name").innerHTML = `<strong>${name}</strong>`;
+          document.getElementById("level").innerHTML = `<strong>Level: </strong><br>${spell.level}`;
+          document.getElementById("rangeArea").innerHTML = `<strong>Range: </strong><br>${spell.range}`;
+          document.getElementById("duration").innerHTML = `<strong>Duration: </strong><br>${spell.duration}`;
+          document.getElementById("school").innerHTML = `<strong>School: </strong><br>${spell.school.name}`;
+          document.getElementById("castingtime").innerHTML = `<strong>Casting time: </strong><br>${spell.casting_time}`;
+          document.getElementById("components").innerHTML = `<strong>Components:</strong><br>${replaceAll(JSON.stringify(spell.components))}`;
+          document.getElementById("attackSave").innerHTML = `<strong>Attack/Save: </strong><br>${spell.dc ? spell.dc.dc_type.name : spell.attack_type ? spell.attack_type.charAt(0).toUpperCase() + spell.attack_type.slice(1) : "None"}`;
+          document.getElementById("damageEffect").innerHTML = `<strong>Damage/Effect: </strong><br>${spell.damage ? spell.damage.damage_type.name : "None"}`;
+          document.getElementById("info").innerHTML = replaceInfo(JSON.stringify(spell.desc));
+          
+          // Display spell classes and subclasses
+          const spellClasses = spell.classes.concat(spell.subclasses);
+          const spellClassesList = document.getElementById("tags");
+          spellClassesList.innerHTML = "";
+          for (const spellClass of spellClasses) {
+            const listItem = document.createElement("div");
+            listItem.textContent = replaceAll(JSON.stringify(spellClass.name));
+            spellClassesList.appendChild(listItem);
+          }
+        } catch (error) {
+          console.log(`Error retrieving spell information: ${error}`);
         }
-        for (const power of subClass) {
-          const listItem = document.createElement('div');
-          listItem.textContent = replaceAll(JSON.stringify(power["name"]));
-          myList.appendChild(listItem);
-        }
-        }
+      }
       function myFunction() {
         var x = document.getElementById("spell").selectedIndex;
         var z = document.getElementsByTagName("option")[x].value;
